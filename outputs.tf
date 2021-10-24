@@ -1,8 +1,3 @@
-output "cluster_id" {
-  description = "EKS cluster ID."
-  value       = module.eks.cluster_id
-}
-
 output "cluster_endpoint" {
   description = "Endpoint for EKS control plane."
   value       = module.eks.cluster_endpoint
@@ -23,12 +18,7 @@ output "config_map_aws_auth" {
   value       = module.eks.config_map_aws_auth
 }
 
-output "region" {
-  description = "AWS region"
-  value       = var.region
-}
-
-output "cluster_name" {
-  description = "Kubernetes Cluster Name"
-  value       = local.cluster_name
+output "node_groups" {
+  description = "Outputs from node groups"
+  value       = module.eks.node_groups
 }
