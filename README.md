@@ -16,4 +16,7 @@ Required Terraform verison is at least .15 or so, but I deployed this all using 
 Tip: if you don't have it already, install tfenv (`brew install tfenv`) to manage terraform versions
 
 ## Nice to have TODO
-Set up proper terraform workspaces and change environments to be dev/prod with variables as well
+- Set up proper terraform workspaces and change environments to be dev/prod with variables as well
+- backend not actually working because I haven't applied it, but ya know:
+https://www.terraform.io/docs/language/settings/backends/s3.html
+
