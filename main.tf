@@ -47,10 +47,8 @@ resource "aws_iam_role_policy_attachment" "eks-cluster-AmazonEKSClusterPolicy" {
 # Security group for network traffic to and from AWS EKS Cluster.
 resource "aws_security_group" "eks-cluster" {
   name        = "SG-eks-cluster"
-  vpc_id      = "${module.vpc.vpc_id}"  
-  depends_on = [
-   "module.vpc"
-  ]
+  vpc_id      = module.vpc.vpc_id
+  depends_on = [module.vpc]
 
   # Egress allows Outbound traffic from the EKS cluster to the  Internet
   egress {                   # Outbound Rule
@@ -82,9 +80,7 @@ resource "aws_eks_cluster" "eks_cluster" {
    subnet_ids         = module.vpc.private_subnets
     }
 
-  depends_on = [
-    "aws_iam_role_policy_attachment.eks-cluster-AmazonEKSClusterPolicy"
-   ]
+  depends_on = [aws_iam_role_policy_attachment.eks-cluster-AmazonEKSClusterPolicy]
 }
 
 # Creating IAM role for EKS nodes to work with other AWS Services.
