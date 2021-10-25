@@ -5,7 +5,7 @@ module "vpc"{
   name = "interview-assignment"
   cidr = "10.0.0.0/16"
 
-  azs             = ["eu-central-1a", "eu-central-1b"]
+  azs             = ["eu-central-1b", "eu-central-1a"]
   private_subnets = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
   public_subnets  = ["10.0.101.0/24", "10.0.102.0/24", "10.0.103.0/24"]
 
@@ -72,7 +72,7 @@ resource "aws_security_group" "eks-cluster" {
 resource "aws_eks_cluster" "eks_cluster" {
   name     = "terraform-EKScluster-reaqta-interview"
   role_arn =  "${aws_iam_role.iam-role-eks-cluster.arn}"
-  version  = "1.21"
+  version  = "1.19"
 
   # Adding VPC Configuration
   vpc_config {             # Configure EKS with vpc and network settings
@@ -127,7 +127,7 @@ resource "aws_eks_node_group" "node" {
   cluster_name    = aws_eks_cluster.eks_cluster.name
   node_group_name = "node_group1"
   node_role_arn   = aws_iam_role.eks_nodes.arn
-  subnet_ids      = module.vpc.private_subnets
+  subnet_ids      = module.vpc.public_subnets
 
   scaling_config {
     desired_size = 1
