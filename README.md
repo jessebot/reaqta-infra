@@ -1,3 +1,5 @@
+This was part of my interview for Reaqta. It goes with this repo, [reaqta-app](https://github.com/jessebot/reaqta-app). I got the job, so I'm archiving this.
+
 # Assumptions
 
 * verison of k8s probably not important -  it's set to 1.19, but we can upgrade to 1.21 when stable
@@ -19,4 +21,3 @@ Tip: if you don't have it already, install tfenv (`brew install tfenv`) to manag
 - Set up proper terraform workspaces and change environments to be dev/prod with variables as well
 - backend not actually working because I haven't applied it, but ya know:
 https://www.terraform.io/docs/language/settings/backends/s3.html
-
